@@ -1,128 +1,66 @@
 import React, { useState } from 'react';
 
 export default function MindyPortfolio() {
-  const [showBooking, setShowBooking] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#1a0f0c] text-[#f5e1d9] font-light">
-      {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 bg-[#1a0f0c]/95 backdrop-blur-lg border-b border-[#b8860b]/20">
-        <div className="max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
-          <div className="font-serif text-4xl tracking-widest text-[#d4af77]">MINDY</div>
-          <div className="hidden md:flex gap-10 text-sm uppercase tracking-widest">
-            <a href="#services" className="hover:text-[#d4af77]">Experiences</a>
-            <a href="#rates" className="hover:text-[#d4af77]">Rates</a>
-            <a href="#gallery" className="hover:text-[#d4af77]">Gallery</a>
+    <div className="min-h-screen bg-black text-white font-sans antialiased">
+      {/* Sticky Mobile CTA Bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-gradient-to-t from-black via-black/95 to-transparent pb-4 px-5">
+        <a
+          href="tel:4379886969"
+          className="block w-full bg-gradient-to-r from-red-700 via-red-600 to-amber-600 text-white text-center py-5 rounded-2xl font-bold text-xl shadow-2xl shadow-red-950/60 hover:scale-[1.03] active:scale-100 transition-all duration-300"
+        >
+          Call / Text 437-988-6969
+        </a>
+      </div>
+
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-red-950/40">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center">
+          <h1 className="text-5xl font-serif tracking-widest text-amber-400 drop-shadow-[0_4px_10px_rgba(245,158,11,0.4)]">MINDY</h1>
+          <div className="hidden md:flex gap-12 text-sm uppercase tracking-[0.25em] font-medium">
+            <a href="#services" className="hover:text-amber-300 transition-colors">Experiences</a>
+            <a href="#rates" className="hover:text-amber-300 transition-colors">Rates</a>
+            <a href="#gallery" className="hover:text-amber-300 transition-colors">Gallery</a>
           </div>
-          <a href="tel:4379886969" className="bg-[#b8860b] hover:bg-[#d4af77] text-black px-8 py-3 rounded-full font-medium text-sm">437-988-6969</a>
         </div>
       </nav>
 
-      {/* HERO - Soft sensual massage vibe */}
-      <section className="relative h-screen flex items-center justify-center bg-cover bg-center" 
-               style={{ backgroundImage: "url('https://images.unsplash.com/photo-1578632293730-0c3c5c0b5e5e?q=80&w=2070')" }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-[#1a0f0c]/80 to-[#1a0f0c]" />
-        <div className="relative z-10 text-center px-6 max-w-2xl">
-          <div className="inline-block bg-[#b8860b]/10 border border-[#d4af77]/30 px-8 py-2 rounded-full text-[#d4af77] text-xs tracking-[2px] mb-6">
-            HAMILTON • 11AM – 9PM
+      {/* Hero – full-screen sexy wet/candlelit background */}
+      <section
+        className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1604004555482-2d3e4a0f3e8e?q=80&w=2070&auto=format&fit=crop')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/75 to-black" />
+        <div className="relative z-10 text-center px-6 max-w-5xl">
+          <div className="inline-flex items-center gap-4 bg-red-900/30 border border-red-600/40 px-8 py-3 rounded-full text-amber-300 text-sm tracking-widest mb-10 animate-pulse">
+            HAMILTON • 11AM–9PM • PRIVATE & DISCREET
           </div>
-          <h1 className="font-serif text-[88px] leading-none tracking-tighter text-white mb-3">Mindy</h1>
-          <p className="text-2xl text-[#d4af77] font-light">Irish • All Natural • Sensual Escape</p>
-          <p className="mt-8 text-lg max-w-md mx-auto">Full-body oil massage • Body slide • Squirt shows • Private showers • No rush</p>
-          <button onClick={() => setShowBooking(true)} className="mt-12 bg-white text-black px-14 py-5 rounded-full text-lg font-medium hover:bg-[#d4af77] transition">Book Your Session</button>
+          <h1 className="text-8xl md:text-[10rem] font-serif italic tracking-tighter leading-none mb-6 drop-shadow-2xl text-white">
+            Mindy
+          </h1>
+          <p className="text-3xl md:text-5xl text-amber-200 font-light mb-8">Irish Sensual Escape</p>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed opacity-90">
+            All-natural curves • Hot oil full-body massage • Slippery body slide • Squirt shows • Exotic showers • No-rush intimacy
+          </p>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-block bg-gradient-to-r from-red-700 via-red-600 to-amber-600 px-16 py-7 rounded-2xl text-2xl font-bold shadow-2xl shadow-red-950/70 hover:scale-105 hover:shadow-red-900/90 transition-all duration-300"
+          >
+            Book Your Session
+          </button>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="py-20 px-6 max-w-3xl mx-auto text-center">
-        <p className="text-xl leading-relaxed">
-          Hi gentlemen,<br />
-          I’m Mindy — your private Hamilton sensual companion. 
-          Former pageant girl, all natural curves, soft Irish accent, and a true passion for making you feel completely spoiled. 
-          Clean, discreet, and always unhurried.
-        </p>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="bg-[#2b1812] py-20">
-        <div className="max-w-5xl mx-auto px-6">
-          <h2 className="font-serif text-6xl text-center mb-16 text-white">My Signature Experiences</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { title: "100hh Sensual Massage", desc: "Full body hot oil massage with special attention", price: "$100" },
-              { title: "Body Slide & Shower", desc: "Slippery wet fun with exotic shower play", price: "+$50" },
-              { title: "Squirt Show", desc: "Private erotic show you’ll never forget", price: "Ask" },
-              { title: "Full Girlfriend Experience", desc: "Kisses, cuddles, and real connection", price: "Custom" },
-            ].map((s, i) => (
-              <div key={i} className="bg-[#1a0f0c] border border-[#b8860b]/20 p-10 rounded-3xl hover:border-[#d4af77] transition group">
-                <h3 className="text-3xl font-medium mb-3 text-white">{s.title}</h3>
-                <p className="text-[#f5e1d9]/80 mb-6">{s.desc}</p>
-                <span className="text-[#d4af77] font-medium text-xl">{s.price}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* RATES */}
-      <section id="rates" className="py-20 px-6 bg-[#1a0f0c]">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="font-serif text-5xl text-center mb-12">My Rates</h2>
-          <div className="space-y-6">
-            <div className="flex justify-between items-center bg-[#2b1812] px-8 py-7 rounded-2xl">
-              <span className="text-xl">100hh Massage Special</span>
-              <span className="text-3xl font-serif text-[#d4af77]">$100</span>
-            </div>
-            <div className="flex justify-between items-center bg-[#2b1812] px-8 py-7 rounded-2xl">
-              <span className="text-xl">45 minutes</span>
-              <span className="text-3xl font-serif text-[#d4af77]">$150</span>
-            </div>
-            <div className="flex justify-between items-center bg-[#2b1812] px-8 py-7 rounded-2xl">
-              <span className="text-xl">1 Hour</span>
-              <span className="text-3xl font-serif text-[#d4af77]">$200</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* GALLERY */}
-      <section id="gallery" className="py-20 bg-[#2b1812]">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="font-serif text-5xl text-center mb-12">A Little Tease</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[1011,1012,1013,1014,1015,1016].map(i => (
-              <img key={i} src={`https://picsum.photos/id/${i}/800/1000`} alt="Mindy" className="rounded-3xl aspect-[4/5] object-cover hover:scale-105 transition duration-300" />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BOOKING */}
-      <section className="py-24 px-6 bg-[#1a0f0c] text-center">
-        <h2 className="font-serif text-5xl mb-6">Let’s Make It Happen</h2>
-        <p className="text-xl mb-10">Text or call anytime 11am–9pm</p>
-        <a href="tel:4379886969" className="block mx-auto w-fit bg-[#d4af77] text-black px-16 py-6 rounded-full text-2xl font-medium hover:bg-white transition">437-988-6969</a>
-      </section>
-
-      <footer className="py-12 text-center text-xs text-[#b8860b]/60 border-t border-[#b8860b]/10">
-        Mindy • Hamilton • Private &amp; Discreet • 18+
-      </footer>
-
-      {/* Simple booking modal */}
-      {showBooking && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-6">
-          <div className="bg-[#2b1812] max-w-md w-full rounded-3xl p-10">
-            <h3 className="text-3xl mb-8">Send Mindy a message</h3>
-            <form className="space-y-6">
-              <input type="text" placeholder="Your name" className="w-full bg-black border border-[#b8860b]/30 p-5 rounded-2xl" />
-              <input type="tel" placeholder="Phone or WhatsApp" className="w-full bg-black border border-[#b8860b]/30 p-5 rounded-2xl" />
-              <textarea placeholder="When would you like to see me?" rows={4} className="w-full bg-black border border-[#b8860b]/30 p-5 rounded-2xl"></textarea>
-              <button type="submit" className="w-full py-6 bg-[#d4af77] text-black font-medium rounded-2xl">Send Request</button>
-              <button type="button" onClick={() => setShowBooking(false)} className="text-[#b8860b]">Close</button>
-            </form>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+      {/* About – glassmorphic card over seductive bg */}
+      <section
+        className="relative py-32 px-6 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1519741497674-8d3e4e0d3e5f?q=80&w=2070&auto=format&fit=crop')",
+        }}
+      >
